@@ -6,7 +6,6 @@ import com.lxbb.user.user.domain.SysTokenTable;
 import com.lxbb.user.user.domain.SysUserBase;
 import com.lxbb.user.user.persistence.SysTokenTableMapper;
 import org.springframework.stereotype.Service;
-import org.springframework.util.unit.DataUnit;
 
 import java.time.ZonedDateTime;
 import java.util.Date;

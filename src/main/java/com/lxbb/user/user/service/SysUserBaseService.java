@@ -1,6 +1,7 @@
 package com.lxbb.user.user.service;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.lxbb.user.base.exception.MyException;
 import com.lxbb.user.base.exception.RespCode;
 import com.lxbb.user.base.service.BaseService;
@@ -18,12 +19,18 @@ import java.util.List;
  * @since 2019-04-19 22:21:50
  */
 @Service
-public class SysUserBaseService extends BaseService<SysUserBaseMapper, SysUserBase> {
+public class SysUserBaseService extends BaseService<SysUserBaseMapper,SysUserBase> {
 
     @Autowired
-    private SysTokenTableService tokenService;
+    private SysTokenTableService sysTokenTableService;
 
-    public String login(String userName, String userPass) {
+    /**
+     * 用户登陆逻辑/获取token
+     * @param userName
+     * @param userPass
+     * @return
+     */
+    public String loginGetToken(String userName, String userPass) {
         SysUserBase user = null;
         String token = null;
         List<SysUserBase> userList = baseMapper.selectList(new EntityWrapper<SysUserBase>()
@@ -40,9 +47,18 @@ public class SysUserBaseService extends BaseService<SysUserBaseMapper, SysUserBa
             user = userList.get(0);
         }
         if (user != null) {
-            token = tokenService.login(user);
+            token = sysTokenTableService.login(user);
         }
         return token;
+    }
+
+
+    /**
+     * 创建单条
+     * @param userBase
+     */
+    public void createOne(SysUserBase userBase){
+        baseMapper.insert(userBase);
     }
 
 }

@@ -1,15 +1,12 @@
 package com.lxbb.user.user.domain;
 
+import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableName;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import com.lxbb.user.base.domain.Domain;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
 import java.time.ZonedDateTime;
 
 /**
@@ -20,7 +17,7 @@ import java.time.ZonedDateTime;
 
 @TableName(value = "sys_token_table")
 @Data
-public class SysTokenTable extends Domain {
+public class SysTokenTable extends Model<SysTokenTable> {
     /**
      * 租户id
      */
@@ -54,4 +51,8 @@ public class SysTokenTable extends Domain {
     @TableField(value = "delete_flag")
     private Integer deleteFlag;
 
+    @Override
+    protected Serializable pkVal() {
+        return null;
+    }
 }

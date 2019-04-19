@@ -15,8 +15,17 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/sys/user/base")
 public class SysUserBaseController {
 
-    @Autowired
+    @Autowired(required=true)
     private SysUserBaseService sysUserBaseService;
+
+    @PostMapping(value = "/login")
+    public String login(
+            String userName,
+            String userPass){
+        return sysUserBaseService.loginGetToken(userName,userPass);
+    }
+
+
 
 
 }

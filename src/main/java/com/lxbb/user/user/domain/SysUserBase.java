@@ -1,13 +1,12 @@
 package com.lxbb.user.user.domain;
 
+import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableName;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import com.lxbb.user.base.domain.Domain;
 import lombok.Data;
 
-import java.time.ZonedDateTime;
+import java.io.Serializable;
 
 /**
  * @author zhaowei.zhang01@hand-china.com
@@ -17,7 +16,7 @@ import java.time.ZonedDateTime;
 
 @TableName(value = "sys_user_base")
 @Data
-public class SysUserBase extends Domain {
+public class SysUserBase extends Model<SysUserBase> {
     /**
      * 租户id
      */
@@ -75,4 +74,8 @@ public class SysUserBase extends Domain {
     @TableField(value = "delete_flag")
     private Integer deleteFlag;
 
+    @Override
+    protected Serializable pkVal() {
+        return null;
+    }
 }
