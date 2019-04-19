@@ -19,16 +19,28 @@ import java.time.ZonedDateTime;
 @ToString(callSuper = true)
 abstract public class Domain extends BaseObject {
 
+    /**
+     创建者
+     */
     @TableField(fill = FieldFill.INSERT)
-    protected ZonedDateTime createdDate;
+    private Long createBy;
 
+    /**
+     创建日期
+     */
     @TableField(fill = FieldFill.INSERT)
-    protected Long createdBy;
+    private ZonedDateTime createDate;
 
+    /**
+     最近修改人
+     */
     @TableField(fill = FieldFill.INSERT_UPDATE)
-    protected ZonedDateTime lastUpdatedDate;
+    private Long updateBy;
 
+    /**
+     最近修改日期
+     */
     @TableField(fill = FieldFill.INSERT_UPDATE)
-    protected Long lastUpdatedBy;
+    private ZonedDateTime updateDate;
 
 }

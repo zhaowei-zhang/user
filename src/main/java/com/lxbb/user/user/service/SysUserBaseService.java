@@ -6,6 +6,7 @@ import com.lxbb.user.base.exception.RespCode;
 import com.lxbb.user.base.service.BaseService;
 import com.lxbb.user.user.domain.SysUserBase;
 import com.lxbb.user.user.persistence.SysUserBaseMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,8 +20,12 @@ import java.util.List;
 @Service
 public class SysUserBaseService extends BaseService<SysUserBaseMapper, SysUserBase> {
 
+    @Autowired
+    private SysTokenTableService tokenService;
+
     public String login(String userName, String userPass) {
         SysUserBase user = null;
+        String token = null;
         List<SysUserBase> userList = baseMapper.selectList(new EntityWrapper<SysUserBase>()
                 .eq("user_name", userName)
                 .eq("user_pass", userPass)
@@ -34,11 +39,10 @@ public class SysUserBaseService extends BaseService<SysUserBaseMapper, SysUserBa
         else {
             user = userList.get(0);
         }
-
         if (user != null) {
-
+            token = tokenService.login(user);
         }
-        return null;
+        return token;
     }
 
 }

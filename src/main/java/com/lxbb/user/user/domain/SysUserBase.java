@@ -22,11 +22,9 @@ public class SysUserBase extends Domain {
      * 租户id
      */
     @TableField(value = "tenant_id")
-    @JsonSerialize(using = ToStringSerializer.class)
     private Long tenantId;
 
     @TableField(value = "user_id")
-    @JsonSerialize(using = ToStringSerializer.class)
     private Long userId;
 
     /**
@@ -63,7 +61,6 @@ public class SysUserBase extends Domain {
      * 详情id
      */
     @TableField(value = "data_id")
-    @JsonSerialize(using = ToStringSerializer.class)
     private Long dataId;
 
     /**
@@ -77,31 +74,5 @@ public class SysUserBase extends Domain {
      */
     @TableField(value = "delete_flag")
     private Integer deleteFlag;
-
-    /**
-     * 创建者
-     */
-    @TableField(value = "create_by")
-    @JsonSerialize(using = ToStringSerializer.class)
-    private Long createBy;
-
-    /**
-     * 创建日期
-     */
-    @TableField(value = "create_date")
-    private ZonedDateTime createDate;
-
-    /**
-     * 最近修改人
-     */
-    @TableField(value = "update_by")
-    @JsonSerialize(using = ToStringSerializer.class)
-    private Long updateBy;
-
-    /**
-     * 最近修改日期
-     */
-    @TableField(value = "update_date")
-    private ZonedDateTime updateDate;
 
 }
