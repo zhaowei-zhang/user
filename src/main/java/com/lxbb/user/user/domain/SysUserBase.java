@@ -1,12 +1,9 @@
 package com.lxbb.user.user.domain;
 
-import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableName;
 import com.lxbb.user.base.domain.Domain;
 import lombok.Data;
-
-import java.io.Serializable;
 
 /**
  * @author zhaowei.zhang01@hand-china.com
@@ -16,7 +13,7 @@ import java.io.Serializable;
 
 @TableName(value = "sys_user_base")
 @Data
-public class SysUserBase extends Model<SysUserBase> {
+public class SysUserBase extends Domain {
     /**
      * 租户id
      */
@@ -62,20 +59,7 @@ public class SysUserBase extends Model<SysUserBase> {
     @TableField(value = "data_id")
     private Long dataId;
 
-    /**
-     * 启用标志
-     */
-    @TableField(value = "enable_flag")
-    private Integer enableFlag;
 
-    /**
-     * 删除标志
-     */
-    @TableField(value = "delete_flag")
-    private Integer deleteFlag;
 
-    @Override
-    protected Serializable pkVal() {
-        return null;
-    }
+
 }

@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
-import java.time.ZonedDateTime;
+import java.sql.Timestamp;
 
 /**
  * @description:
@@ -29,7 +29,7 @@ abstract public class Domain extends BaseObject {
      创建日期
      */
     @TableField(fill = FieldFill.INSERT)
-    private ZonedDateTime createDate;
+    private Timestamp createDate;
 
     /**
      最近修改人
@@ -41,6 +41,17 @@ abstract public class Domain extends BaseObject {
      最近修改日期
      */
     @TableField(fill = FieldFill.INSERT_UPDATE)
-    private ZonedDateTime updateDate;
+    private Timestamp updateDate;
 
+    /**
+     * 启用标志
+     */
+    @TableField(fill = FieldFill.INSERT_UPDATE)
+    private Integer enableFlag;
+
+    /**
+     * 删除标志
+     */
+    @TableField(fill = FieldFill.INSERT_UPDATE)
+    private Integer deleteFlag;
 }

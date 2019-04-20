@@ -1,6 +1,5 @@
 package com.lxbb.user.user.domain;
 
-import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableName;
 import com.lxbb.user.base.domain.Domain;
@@ -17,7 +16,7 @@ import java.time.ZonedDateTime;
 
 @TableName(value = "sys_token_table")
 @Data
-public class SysTokenTable extends Model<SysTokenTable> {
+public class SysTokenTable extends Domain {
     /**
      * 租户id
      */
@@ -39,20 +38,7 @@ public class SysTokenTable extends Model<SysTokenTable> {
     @TableField(value = "user_id")
     private Long userId;
 
-    /**
-     * 启用标志
-     */
-    @TableField(value = "enable_flag")
-    private Integer enableFlag;
 
-    /**
-     * 删除标志
-     */
-    @TableField(value = "delete_flag")
-    private Integer deleteFlag;
 
-    @Override
-    protected Serializable pkVal() {
-        return null;
-    }
+
 }

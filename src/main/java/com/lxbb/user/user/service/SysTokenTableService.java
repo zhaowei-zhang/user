@@ -39,6 +39,7 @@ public class SysTokenTableService extends BaseService<SysTokenTableMapper, SysTo
         token.setEnableFlag(1);
         token.setDeleteFlag(0);
         token.setTenantId(user.getTenantId());
+
         this.insert(token);
         return token;
     }

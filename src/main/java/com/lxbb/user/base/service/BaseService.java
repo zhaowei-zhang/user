@@ -10,6 +10,9 @@ package com.lxbb.user.base.service;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import com.lxbb.user.base.domain.Domain;
+import com.lxbb.user.base.util.ReflectUtil;
+import org.apache.ibatis.reflection.Reflector;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +21,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.sql.DataSource;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -112,5 +116,17 @@ abstract public class BaseService<M extends BaseMapper<T>, T> extends ServiceImp
         Type type = clz.getGenericSuperclass();
         ParameterizedType pt = (ParameterizedType) type;
         return (Class) pt.getActualTypeArguments()[1];
+    }
+
+    @Override
+    public boolean insert(T entity) {
+        Class<?> entityClass = entity.getClass();
+        if (Domain.class.isAssignableFrom(entityClass)) {
+            ReflectUtil.executeFieldSetter(entity, "createDate",1, false, "", null);
+            ReflectUtil.executeFieldSetter(entity, "updateDate",1, false, "", null);
+            ReflectUtil.executeFieldSetter(entity, "enableFlag",1, false, "", null);
+            ReflectUtil.executeFieldSetter(entity, "deleteFlag",1, false, "", null);
+        }
+        return super.insert(entity);
     }
 }

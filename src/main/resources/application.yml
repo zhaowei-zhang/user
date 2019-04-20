@@ -15,25 +15,25 @@ spring:
 #    password: 000000
     driver-class-name: com.mysql.cj.jdbc.Driver
 #mybatis-plus
-#mybatis-plus:
+mybatis-plus:
+  config-location: classpath:mybatis-config.xml
 #  base-package: com.lxbb.user.user.persistence
 #  mapper-locations: classpath:com/lxbb/user/**/persistence/*.class
 #  type-aliases-package: com.lxbb.user.**.domain
 #  mapper-locations: classpath:com/lxbb/user/**/persistence/*.xml
 
 #  type-handlers-package
-#mybatis-plus:
-#  global-config:
-#    db-config:
-#      id-type: auto
-#      field-strategy: not_empty
-#        #驼峰下划线转换
-#      column-underline: true
-#        #逻辑删除配置
-#      logic-delete-value: 0
-#      logic-not-delete-value: 1
-#      db-type: mysql
-#    refresh: false
-#  configuration:
-#    map-underscore-to-camel-case: true
-#    cache-enabled: false
+  global-config:
+    db-config:
+      id-type: auto
+      field-strategy: not_empty
+        #驼峰下划线转换
+      column-underline: true
+        #逻辑删除配置
+      logic-delete-value: 0
+      logic-not-delete-value: 1
+      db-type: mysql
+    refresh: false
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
